@@ -37,11 +37,7 @@ Route::group([
     'middleware' => 'api',
     'prefix' => 'auth/clinet'
 ], function ($router) {
-    Route::post('/login', [ClientAuthController::class, 'login']);
-    Route::post('/register', [ClientAuthController::class, 'register']);
-    Route::post('/logout', [ClientAuthController::class, 'logout']);
-    Route::post('/refresh', [ClientAuthController::class, 'refresh']);
-    Route::get('/user-profile', [ClientAuthController::class, 'userProfile']);
+    Route::post('/addClient', [ClientAuthController::class, 'register']);
 });
 
 
