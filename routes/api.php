@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\ClientAuthController;
+use App\Http\Controllers\Api\CreateProjectController;
 use App\Http\Controllers\Api\partnerAuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -40,5 +41,10 @@ Route::group([
     Route::post('/addClient', [ClientAuthController::class, 'register']);
 });
 
-
+Route::group([
+    'middleware' => 'api',
+    'prefix' => 'project'
+],function($router){
+    Route::post('/createProject',[CreateProjectController::class,'create']);
+});
 

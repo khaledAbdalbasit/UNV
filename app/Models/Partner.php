@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class Partner extends Model implements JWTSubject,Authenticatable
+class Partner extends Model implements JWTSubject, Authenticatable
 {
     use HasFactory;
     protected $fillable = [
@@ -23,7 +23,8 @@ class Partner extends Model implements JWTSubject,Authenticatable
         'status',
     ];
 
-    public function getJWTIdentifier() {
+    public function getJWTIdentifier()
+    {
         return $this->getKey();
     }
     /**
@@ -31,7 +32,8 @@ class Partner extends Model implements JWTSubject,Authenticatable
      *
      * @return array
      */
-    public function getJWTCustomClaims() {
+    public function getJWTCustomClaims()
+    {
         return [];
     }
 
@@ -69,4 +71,11 @@ class Partner extends Model implements JWTSubject,Authenticatable
     {
         return $this->hasMany(Client::class);
     }
+
+    public function project()
+    {
+        return $this->belongsTo(Project::class);
+    }
+
+    
 }
